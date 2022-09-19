@@ -23,6 +23,23 @@ class UserService {
 
 		return userCreated;
 	}
+
+	async updateUser(id, user) {
+		if (!user.name) return { error: 'O nome é um atributo obrigatório' };
+
+		if (!user.email) return { error: 'O email é um atributo obrigatório' };
+
+		if (!user.password) return { error: 'A senha é um atributo obrigatório' };
+
+		const emails = await db('users').select('email');
+
+		if (emails.find((item) => item.email === user.email))
+			return { error: 'Este email já está registrado' };
+
+		const userUpdated = await db('users').where('id', id).update(user, '*');
+
+		return userUpdated;
+	}
 }
 
 module.exports = new UserService();

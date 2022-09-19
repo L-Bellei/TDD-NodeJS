@@ -13,6 +13,5 @@
 
 ### For use:
 
-> In development -> yarn dev
-
-> for tests -> yarn test
+- In development -> yarn dev
+- for tests -> yarn test

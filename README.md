@@ -4,12 +4,12 @@
 
 ### Tools:
 
-> Node.js
-> Jest Framework
-> PostgreSQl
-> JWT authentication
-> Knex
-> Express
+- Node.js
+- Jest Framework
+- PostgreSQl
+- JWT authentication
+- Knex
+- Express
 
 ### For use:
 

@@ -1,12 +1,13 @@
 # Node API - TDD
 
-> API developed for practice with automated tests
+> API desenvolvida para prática na implementação do pattern TDD.
 
 ### Tools:
 
 - Node.js
 - Jest Framework
-- PostgreSQl
+- Supertest
+- PostgreSQL
 - JWT authentication
 - Knex
 - Express
@@ -15,3 +16,4 @@
 
 - In development -> yarn dev
 - for tests -> yarn test
+- for automated tests instantly - yarn secure-mode

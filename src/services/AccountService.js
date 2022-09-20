@@ -8,7 +8,7 @@ class AccountService {
 	}
 
 	async getAccount(id) {
-		const account = await db('accounts').where('id', id).select();
+		const account = await db('accounts').where('id', id);
 
 		return account;
 	}

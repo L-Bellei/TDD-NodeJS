@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../src/app');
 const UserService = require('../src/services/UserService');
+const AccountService = require('../src/services/AccountService');
 
 const MAIN_ROUTE = '/accounts';
 let user;
@@ -22,4 +23,32 @@ test('Deve inserir uma conta com sucesso', async () => {
 
 	expect(response.status).toBe(201);
 	expect(response.body).toHaveProperty('name', '#Acc 1');
+});
+
+test('Deve listar todas as contas', async () => {
+	for (let i = 0; i < 3; i++) {
+		await AccountService.postAccount({
+			name: `#Acc ${Math.floor(Math.random() * 1200)}`,
+			user_id: 111,
+		});
+	}
+
+	const response = await request(app).get(MAIN_ROUTE);
+
+	expect(response.status).toBe(200);
+	expect(response.body.length).toBeGreaterThan(2);
+});
+
+test('Deve retornar a conta pelo id', async () => {
+	for (let i = 0; i < 3; i++) {
+		await AccountService.postAccount({
+			name: `#Acc ${Math.floor(Math.random() * 1000)}`,
+			user_id: 111,
+		});
+	}
+
+	const response = await request(app).get(`${MAIN_ROUTE}/${111}`);
+
+	expect(response.status).toBe(200);
+	expect(response.body[0]).toHaveProperty('name');
 });

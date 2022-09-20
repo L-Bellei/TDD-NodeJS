@@ -1,10 +1,12 @@
 const AccountService = require('../services/AccountService');
 
 class AccountController {
-	async getAccounts(req, res) {
+	async getAccount(req, res) {
 		try {
 			const { id } = req.params;
 			const accounts = await AccountService.getAccount(id);
+
+			console.log(id, accounts);
 
 			return res.status(200).json(accounts);
 		} catch (err) {
@@ -12,7 +14,7 @@ class AccountController {
 		}
 	}
 
-	async getAccount(req, res) {
+	async getAccounts(req, res) {
 		try {
 			const accounts = await AccountService.getAccounts();
 
